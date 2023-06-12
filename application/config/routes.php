@@ -90,7 +90,7 @@ $route['autoupdate'] = "dashboard/autoupdate";
 //module
 $route['module'] = "addon/module/index";
 // Menu add
-$route['menu-add'] = "menu/Menumethod/index";
+$route['menu-add'] = "menu/Menumethod/create";
 
 //C_O_A
 $route['accounts/financial-year'] = "accounts/accounts/fin_yearlist";

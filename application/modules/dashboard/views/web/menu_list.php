@@ -59,7 +59,7 @@
             margin-bottom: 10px;
         }
 
-        input[type="text"]{
+        input[type="text"] {
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -93,9 +93,6 @@
                         Menu</a></button> -->
                     <button onclick="openModal()" class="btn btn-primary">Add Menu</button>
                 </div>
-
-
-
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
 
@@ -103,8 +100,8 @@
                     <div class="modal-content">
                         <span class="close" onclick="closeModal()" style="float: right;">&times;</span>
                         <h2>Menu Add - Form</h2>
-                        <form>
-                            <?php echo form_open('Menumethod/submit_form'); ?>
+                        <form method="post" action="<?php echo site_url('menu/Menumethod/create'); ?>">
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <label for="name">Menu Name:</label>
                             <input type="text" id="name" name="menu_name" placeholder="Menu name">
 
@@ -112,7 +109,6 @@
                             <input type="text" id="email" name="menu_slug" placeholder="Menu slug">
 
                             <input type="submit" value="Submit">
-                            <?php echo form_close(); ?>
                         </form>
                     </div>
 
