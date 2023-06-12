@@ -13,7 +13,7 @@ class Menumethod extends CI_Controller {
 
     public function index() {
         // Load the form view
-        $this->load->view('MenuForm');
+        $this->load->view('menu_list');
     }
 
     public function submit_form() {
