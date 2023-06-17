@@ -3,81 +3,81 @@
 
 <head>
     <style>
-        /* Modal */
-        .modal {
-            display: none;
-            /* Hidden by default */
-            position: fixed;
-            /* Stay in place */
-            z-index: 1;
-            /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Full width */
-            height: 100%;
-            /* Full height */
-            overflow: auto;
-            /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Black with opacity */
-        }
+    /* Modal */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black with opacity */
+    }
 
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 30%;
-            /* 80% width */
-        }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        /* 80% width */
+    }
 
-        /* Close Button */
-        .close {
-            color: #aaa;
-            float: left;
-            font-size: 30px;
-            font-weight: bold;
-        }
+    /* Close Button */
+    .close {
+        color: #aaa;
+        float: left;
+        font-size: 30px;
+        font-weight: bold;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-        /* Form Styling */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
+    /* Form Styling */
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 
-        label {
-            margin-bottom: 10px;
-        }
+    label {
+        margin-bottom: 10px;
+    }
 
-        input[type="text"] {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    input[type="text"] {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
     </style>
 </head>
 
@@ -101,7 +101,8 @@
                         <span class="close" onclick="closeModal()" style="float: right;">&times;</span>
                         <h2>Menu Add - Form</h2>
                         <form method="post" action="<?php echo site_url('menu/Menumethod/create'); ?>">
-                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
+                                value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <label for="name">Menu Name:</label>
                             <input type="text" id="name" name="menu_name" placeholder="Menu name">
 
@@ -128,45 +129,51 @@
                         </thead>
                         <tbody>
                             <?php if (!empty($allmenu)) { ?>
-                                <?php $sl = 1; ?>
-                                <?php foreach ($allmenu as $value) { ?>
-                                    <tr>
-                                        <td><?php echo $sl++; ?></td>
-                                        <td id="menu_name-<?php echo html_escape($value->menuid); ?>">
-                                            <?php echo html_escape($value->menu_name); ?></td>
-                                        <td id="menu_slug-<?php echo html_escape($value->menuid); ?>">
-                                            <?php echo html_escape($value->menu_slug); ?></td>
-                                        <td></td>
-                                        <td><?php if ($value->isactive == 1) {
+                            <?php $sl = 1; ?>
+                            <?php foreach ($allmenu as $value) { ?>
+                            <tr>
+                                <td><?php echo $sl++; ?></td>
+                                <td id="menu_name-<?php echo html_escape($value->menuid); ?>">
+                                    <?php echo html_escape($value->menu_name); ?></td>
+                                <td id="menu_slug-<?php echo html_escape($value->menuid); ?>">
+                                    <?php echo html_escape($value->menu_slug); ?></td>
+                                <td></td>
+                                <td><?php if ($value->isactive == 1) {
                                                 echo display("active");
                                             } else {
                                                 echo display("inactive");
                                             } ?>
-                                        </td>
-                                        <td>
-                                            <a onclick="editmenu('<?php echo html_escape($value->isactive); ?>','<?php echo html_escape($value->parentid); ?>','<?php echo html_escape($value->menuid); ?>')" data-toggle="tooltip" data-placement="left" title="Update" class="btn btn-success btn-sm"><i class="ti-pencil text-white" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
-                                    <?php if (!empty($value->sub)) {
+                                </td>
+                                <td>
+                                    <a onclick="editmenu('<?php echo html_escape($value->isactive); ?>','<?php echo html_escape($value->parentid); ?>','<?php echo html_escape($value->menuid); ?>')"
+                                        data-toggle="tooltip" data-placement="left" title="Update"
+                                        class="btn btn-success btn-sm"><i class="ti-pencil text-white"
+                                            aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                            <?php if (!empty($value->sub)) {
                                         foreach ($value->sub as $submenu) { ?>
-                                            <tr>
-                                                <td><?php echo $sl++; ?></td>
-                                                <td id="menu_name-<?php echo html_escape($submenu->menuid); ?>">
-                                                    <?php echo html_escape($submenu->menu_name); ?></td>
-                                                <td id="menu_slug-<?php echo html_escape($submenu->menuid); ?>">
-                                                    <?php echo html_escape($submenu->menu_slug); ?></td>
-                                                <td><?php echo html_escape($value->menu_name); ?></td>
-                                                <td><?php if ($submenu->isactive == 1) {
+                            <tr>
+                                <td><?php echo $sl++; ?></td>
+                                <td id="menu_name-<?php echo html_escape($submenu->menuid); ?>">
+                                    <?php echo html_escape($submenu->menu_name); ?></td>
+                                <td id="menu_slug-<?php echo html_escape($submenu->menuid); ?>">
+                                    <?php echo html_escape($submenu->menu_slug); ?></td>
+                                <td><?php echo html_escape($value->menu_name); ?></td>
+                                <td><?php if ($submenu->isactive == 1) {
                                                         echo display("active");
                                                     } else {
                                                         echo display("inactive");
                                                     } ?>
-                                                </td>
-                                                <td>
-                                                    <a onclick="editmenu('<?php echo html_escape($submenu->isactive); ?>',<?php echo html_escape($submenu->parentid); ?>,<?php echo html_escape($submenu->menuid); ?>)" data-toggle="tooltip" data-placement="left" title="Update" class="btn btn-success btn-sm"><i class="ti-pencil text-white" aria-hidden="true"></i></a>
-                                                </td>
-                                            </tr>
-                                    <?php }
+                                </td>
+                                <td>
+                                    <a onclick="editmenu('<?php echo html_escape($submenu->isactive); ?>',<?php echo html_escape($submenu->parentid); ?>,<?php echo html_escape($submenu->menuid); ?>)"
+                                        data-toggle="tooltip" data-placement="left" title="Update"
+                                        class="btn btn-success btn-sm"><i class="ti-pencil text-white"
+                                            aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                            <?php }
                                     } ?>
                             <?php  }
                             }  ?>

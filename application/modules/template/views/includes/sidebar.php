@@ -1034,6 +1034,7 @@
                         
                     ),
                 );
+                
                     $path = 'application/modules/';
                     $map  = directory_map($path);
                     $HmvcMenu   = array();
