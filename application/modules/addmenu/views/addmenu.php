@@ -34,13 +34,53 @@
             padding: 20px;
         }
     </style>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-wrap {
+            max-width: 800px;
+            margin: 80px auto;
+            overflow-x: auto;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid #ddd;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background: #e2e2e2;
+        }
+
+        .box-wrap {
+            padding: 0px 16px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- (c) w3schools.com -->
-    <h3 style="text-align: center;">Add Menu - form</h3>
-
     <div>
+        <div>
+            <h3 style="text-align: center;">Add Menu - form</h3>
+        </div>
         <form action="<?php echo site_url('addmenu/Addmenu/create'); ?>" method="post">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <label for="menuname">Menu Name</label>
@@ -49,13 +89,13 @@
             <div>
                 <h4>Do you want to add Sub-Menu?</h4>
                 <label>Yes</label>
-                <input type="radio" value="Yes" name="opt" id="radioBtnYes" onchange="radioBtnY()">
+                <input type="radio" value="2" name="checksubmenu" id="radioBtnYes" onchange="radioBtnY()">
                 <label>No</label>
-                <input type="radio" value="No" name="opt" id="radioBtnNo" onchange="radioBtnN()">
+                <input type="radio" value="1" name="checksubmenu" id="radioBtnNo" onchange="radioBtnN()">
             </div>
             <div style="display: none;" id="menuSlugDiv">
                 <label for="menuslug">Menu Slug</label>
-                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug">
+                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="">
             </div>
 
             <!-- <label for="country">Country</label>
@@ -69,16 +109,46 @@
         </form>
     </div>
 
+    <div class="box-wrap">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Menu Name</th>
+                        <th>Menu Slug</th>
+                        <th>Sub Menu status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $user) : ?>
+                        <tr>
+                            <td><?php echo $user->name; ?></td>
+                            <td><?php echo $user->email; ?></td>
+                            <td>
+                                <a href="<?php echo site_url('user/edit/' . $user->id); ?>">Edit</a> |
+                                <a href="<?php echo site_url('user/delete/' . $user->id); ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <script>
         function radioBtnY() {
             var radioBtnValYes = document.getElementById("radioBtnYes").value;
-            document.getElementById("menuSlugDiv").style.display = 'block';
+            document.getElementById("menuSlugDiv").style.display = 'none';
+            document.getElementById("radioBtnYes").value = '2';
             console.log(radioBtnValYes);
         }
 
         function radioBtnN() {
             var radioBtnValNo = document.getElementById("radioBtnNo").value;
-            document.getElementById("menuSlugDiv").style.display = 'none';
+            document.getElementById("menuSlugDiv").style.display = 'block';
             console.log(radioBtnValNo);
         }
     </script>

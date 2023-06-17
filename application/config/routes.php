@@ -87,7 +87,9 @@ $route['dashboard/home'] = "dashboard/home";
 $route['profile-setting'] = "dashboard/home/setting";
 $route['profile'] = "dashboard/home/profile";
 $route['autoupdate'] = "dashboard/autoupdate";
+// Add Menu
 $route['addmenu'] = "addmenu/Addmenu";
+$route['addmenu-create'] = "addmenu/Addmenu/create";
 //module
 $route['module'] = "addon/module/index";
 // Menu add

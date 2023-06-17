@@ -3,39 +3,38 @@ class Addmenu extends CI_Controller {
   
     public function __construct() {
         parent::__construct();
-        // $this->load->model('Menu_add_model');
+        $this->load->model('Add_menu_model');
     }
   
     public function index() {
         // Fetch all users
-        //$data['users'] = $this->Menu_add_model->get_users();
+        $data['menus'] = $this->Add_menu_model->get_menus();
   
         // Pass the data to the view
-        $this->load->view('addmenu');
+        $this->load->view('addmenu', $data);
        
     }
+
   
-    // public function create() {
-    //     // Handle form submission
-    //     if ($_POST) {
-    //         $data = array(
-    //             'menu_name' => $this->input->post('menu_name'),
-    //             'menu_slug' => $this->input->post('menu_slug'),
-    //             'parentid' => '0',
-    //             'entrydate' => date("Y-m-d"),
-    //             'isactive' => '1'
-    //         );
+    public function create() {
+        // Handle form submission
+        if ($_POST) {
+            $data = array(
+                'menuname' => $this->input->post('menuname'),
+                'checksubmenu' => $this->input->post('checksubmenu'),
+                'menuslug' => $this->input->post('menuslug')
+            );
   
-    //         // Insert user
-    //         $this->Menu_add_model->insert_menu($data);
+            // Insert user
+            $this->Add_menu_model->insert_menu($data);
   
-    //         // Redirect to user list
-    //         redirect('setting');
-    //     }
+            // Redirect to user list
+            redirect('addmenu');
+        }
   
-    //     // Show create user form
-    //     $this->load->view('menu_list');
-    // }
+        // Show create user form
+        $this->load->view('addmenu');
+    }
   
     // public function edit($id) {
     //     // Handle form submission
