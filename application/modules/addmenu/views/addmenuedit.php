@@ -94,7 +94,7 @@
         <div>
             <h3 style="text-align: center;">Edit Menu - form</h3>
         </div>
-        <form action="<?= base_url('addmenu/update/'.$menu->id); ?>" method="post">
+        <form action="<?= base_url('addmenu/update/' . $menu->id); ?>" method="post">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <label for="menuname">Menu Name</label>
             <input type="text" id="menuname" name="menuname" placeholder="Menu Name" value="<?= $menu->menuname ?>">
@@ -108,7 +108,7 @@
             </div>
             <div id="menuSlugDiv">
                 <label for="menuslug">Menu Slug</label>
-                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="<?= $menu->menuslug ?>" required>
+                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="<?= $menu->menuslug ?>">
             </div>
 
             <!-- <label for="country">Country</label>
@@ -124,19 +124,20 @@
 
     <script>
         var MenuSlugVal = document.getElementById("menuslug").value;
+
         function radioBtnY() {
             var radioBtnValYes = document.getElementById("radioBtnYes").value;
             document.getElementById("menuSlugDiv").style.display = 'none';
             MenuSlugVal = document.getElementById("menuslug").value;
             document.getElementById("menuslug").value = '';
-            console.log(radioBtnValYes);
+            console.log(document.getElementById("menuslug").value);
         }
 
         function radioBtnN() {
             var radioBtnValNo = document.getElementById("radioBtnNo").value;
             document.getElementById("menuSlugDiv").style.display = 'block';
             document.getElementById("menuslug").value = MenuSlugVal;
-            console.log(radioBtnValNo);
+            console.log(document.getElementById("menuslug").value);
         }
     </script>
 </body>

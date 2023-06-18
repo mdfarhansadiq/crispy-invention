@@ -142,8 +142,8 @@
                     <tr>
                         <th>Serial No.</th>
                         <th>Menu Name</th>
-                        <th>Menu Slug</th>
                         <th>Sub Menu status</th>
+                        <th>Menu Slug</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -153,8 +153,8 @@
                         <tr>
                             <td><?php echo $sl++; ?></td>
                             <td><?php echo $menu->menuname; ?></td>
+                            <td><?php echo $menu->checksubmenu; ?></td>
                             <td><?php echo $menu->menuslug; ?></td>
-                            
                             <td>
                                 <button class="editBtn">
                                     <a href="<?php echo site_url('addmenu/edit/' . $menu->id); ?>" style="color: #f2f2f2">Edit</a></button> |
