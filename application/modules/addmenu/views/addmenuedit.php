@@ -94,21 +94,21 @@
         <div>
             <h3 style="text-align: center;">Add Menu - form</h3>
         </div>
-        <form action="<?php echo site_url('addmenu/Addmenu/create'); ?>" method="post">
+        <form action="<?php echo site_url('addmenu/update/' . $menu->id); ?>" method="post">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <label for="menuname">Menu Name</label>
-            <input type="text" id="menuname" name="menuname" placeholder="Menu Name">
+            <input type="text" id="menuname" name="menuname" placeholder="Menu Name" value="<?php echo $menu->menuname ?>">
 
             <div>
                 <h4>Do you want to add Sub-Menu?</h4>
                 <label>Yes</label>
-                <input type="radio" value="2" name="checksubmenu" id="radioBtnYes" onchange="radioBtnY()">
+                <input type="radio" value="2" name="checksubmenu" id="radioBtnYes" onchange="radioBtnY()" required>
                 <label>No</label>
-                <input type="radio" value="1" name="checksubmenu" id="radioBtnNo" onchange="radioBtnN()">
+                <input type="radio" value="1" name="checksubmenu" id="radioBtnNo" onchange="radioBtnN()" required>
             </div>
-            <div style="display: none;" id="menuSlugDiv">
+            <div style="" id="menuSlugDiv">
                 <label for="menuslug">Menu Slug</label>
-                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="">
+                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="<?php echo $menu->menuslug ?>" required>
             </div>
 
             <!-- <label for="country">Country</label>
@@ -122,50 +122,20 @@
         </form>
     </div>
 
-    <div class="box-wrap">
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Serial No.</th>
-                        <th>Menu Name</th>
-                        <th>Menu Slug</th>
-                        <th>Sub Menu status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $sl = 1; ?>
-                    <?php foreach ($menus as $menu) : ?>
-                        <tr>
-                            <td><?php echo $sl++; ?></td>
-                            <td><?php echo $menu->menuname; ?></td>
-                            <td><?php echo $menu->menuslug; ?></td>
-                            <td><?php echo $menu->checksubmenu; ?></td>
-                            <td>
-                                <button class="editBtn">
-                                    <a href="<?php echo site_url('addmenu/edit/' . $menu->id); ?>" style="color: #f2f2f2">Edit</a></button> |
-                                <a href="<?php echo site_url('user/delete/' . $user->id); ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <script>
+        var MenuSlugVal = document.getElementById("menuslug").value;
         function radioBtnY() {
             var radioBtnValYes = document.getElementById("radioBtnYes").value;
             document.getElementById("menuSlugDiv").style.display = 'none';
-            document.getElementById("radioBtnYes").value = '2';
+            MenuSlugVal = document.getElementById("menuslug").value;
+            document.getElementById("menuslug").value = '';
             console.log(radioBtnValYes);
         }
 
         function radioBtnN() {
             var radioBtnValNo = document.getElementById("radioBtnNo").value;
             document.getElementById("menuSlugDiv").style.display = 'block';
+            document.getElementById("menuslug").value = MenuSlugVal;
             console.log(radioBtnValNo);
         }
     </script>

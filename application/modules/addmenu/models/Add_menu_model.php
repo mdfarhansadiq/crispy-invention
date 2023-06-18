@@ -16,27 +16,15 @@ class Add_menu_model extends CI_Model {
         return $this->db->insert_id();
     }
   
+    public function edit_menu($id)
+    {
+        $query = $this->db->get_where('add_menu', ['id' => $id]);
+        return $query->row();
+    }
 
-    public function edit($id) {
-        // Handle form submission
-        if ($_POST) {
-            $data = array(
-                'name' => $this->input->post('name'),
-                'email' => $this->input->post('email')
-            );
-  
-            // Update user
-            $this->User_model->update_user($id, $data);
-  
-            // Redirect to user list
-            redirect('user');
-        }
-  
-        // Fetch the user
-        $data['user'] = $this->User_model->get_user($id);
-  
-        // Show edit user form
-        $this->load->view('edit_user', $data);
+    public function update_menu($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('add_menu', $data);
     }
   
     // public function delete_user($id) {

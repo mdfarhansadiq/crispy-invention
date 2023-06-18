@@ -89,7 +89,9 @@ $route['profile'] = "dashboard/home/profile";
 $route['autoupdate'] = "dashboard/autoupdate";
 // Add Menu
 $route['addmenu'] = "addmenu/Addmenu";
-$route['addmenu-create'] = "addmenu/Addmenu/create";
+$route['addmenu/create'] = "addmenu/Addmenu/create";
+$route['addmenu/edit/(:any)'] = "addmenu/Addmenu/edit/$1";
+$route['addmenu/update/(:num)'] = "addmenu/Addmenu/update/$1";
 //module
 $route['module'] = "addon/module/index";
 // Menu add
