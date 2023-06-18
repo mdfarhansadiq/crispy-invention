@@ -91,7 +91,8 @@ $route['autoupdate'] = "dashboard/autoupdate";
 $route['addmenu'] = "addmenu/Addmenu";
 $route['addmenu/create'] = "addmenu/Addmenu/create";
 $route['addmenu/edit/(:any)'] = "addmenu/Addmenu/edit/$1";
-$route['addmenu/update/(:num)'] = "addmenu/Addmenu/update/$1";
+$route['addmenu/update/(:any)']['put'] = "addmenu/Addmenu/update/$1";
+$route['addmenu/delete/(:any)'] = "addmenu/Addmenu/delete/$1";
 //module
 $route['module'] = "addon/module/index";
 // Menu add

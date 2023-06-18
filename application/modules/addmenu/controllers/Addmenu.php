@@ -50,28 +50,34 @@ class Addmenu extends CI_Controller
         $this->load->view('addmenuedit', $data);
     }
 
-    // public function update($id)
-    // {
-    //     if ($_POST) {
-    //         $data = array(
-    //             'menuname' => $this->input->post('menuname'),
-    //             'checksubmenu' => $this->input->post('checksubmenu'),
-    //             'menuslug' => $this->input->post('menuslug')
-    //         );
+    public function update($id)
+    {
+        if ($_POST) {
+            $data = array(
+                'menuname' => $this->input->post('menuname'),
+                'checksubmenu' => $this->input->post('checksubmenu'),
+                'menuslug' => $this->input->post('menuslug')
+            );
 
-    //         // Update user
-    //         $this->Add_menu_model->update_menu($id, $data);
+            $this->db->where('id', $id);
+            $this->db->update('add_menu', $data);
 
-    //         // Redirect to user list
-    //         redirect('addmenu');
-    //     }
-    // }
+            // $this->load->model('Add_menu_model');
+            // Insert user
 
-    // public function delete($id) {
-    //     // Delete user
-    //     $this->Menu_add_model->delete_user($id);
+            // Redirect to user list
+            redirect('addmenu');
+        }
 
-    //     // Redirect to user list
-    //     redirect('user');
-    // }
+        //redirect(base_url('addmenu'));
+    }
+
+    public function delete($id)
+    {
+        // Delete user
+        $this->Add_menu_model->delete_menu($id);
+
+        // Redirect to user list
+        redirect('addmenu');
+    }
 }

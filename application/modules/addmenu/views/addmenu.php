@@ -46,6 +46,19 @@
             margin: 4px 2px;
             cursor: pointer;
         }
+
+        .deleteBtn {
+            background-color: #f44337;;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
     </style>
 
     <style>
@@ -141,11 +154,11 @@
                             <td><?php echo $sl++; ?></td>
                             <td><?php echo $menu->menuname; ?></td>
                             <td><?php echo $menu->menuslug; ?></td>
-                            <td><?php echo $menu->checksubmenu; ?></td>
+                            
                             <td>
                                 <button class="editBtn">
                                     <a href="<?php echo site_url('addmenu/edit/' . $menu->id); ?>" style="color: #f2f2f2">Edit</a></button> |
-                                <a href="<?php echo site_url('user/delete/' . $user->id); ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                    <button class="deleteBtn"> <a href="<?php echo site_url('addmenu/delete/' . $menu->id); ?>" style="color: #f2f2f2;" onclick="return confirm('Are you sure you want to delete this menu?');">Delete</a></button>
                             </td>
                         </tr>
                     <?php endforeach; ?>

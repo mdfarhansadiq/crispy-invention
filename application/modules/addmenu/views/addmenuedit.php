@@ -92,12 +92,12 @@
     <!-- (c) w3schools.com -->
     <div>
         <div>
-            <h3 style="text-align: center;">Add Menu - form</h3>
+            <h3 style="text-align: center;">Edit Menu - form</h3>
         </div>
-        <form action="<?php echo site_url('addmenu/update/' . $menu->id); ?>" method="post">
+        <form action="<?= base_url('addmenu/update/'.$menu->id); ?>" method="post">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <label for="menuname">Menu Name</label>
-            <input type="text" id="menuname" name="menuname" placeholder="Menu Name" value="<?php echo $menu->menuname ?>">
+            <input type="text" id="menuname" name="menuname" placeholder="Menu Name" value="<?= $menu->menuname ?>">
 
             <div>
                 <h4>Do you want to add Sub-Menu?</h4>
@@ -106,9 +106,9 @@
                 <label>No</label>
                 <input type="radio" value="1" name="checksubmenu" id="radioBtnNo" onchange="radioBtnN()" required>
             </div>
-            <div style="" id="menuSlugDiv">
+            <div id="menuSlugDiv">
                 <label for="menuslug">Menu Slug</label>
-                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="<?php echo $menu->menuslug ?>" required>
+                <input type="text" id="menuslug" name="menuslug" placeholder="Menu Slug" value="<?= $menu->menuslug ?>" required>
             </div>
 
             <!-- <label for="country">Country</label>
