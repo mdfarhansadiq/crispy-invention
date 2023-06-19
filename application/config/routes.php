@@ -99,6 +99,9 @@ $route['addsubmenu/create'] = "addsubmenu/AddSubmenu/create";
 $route['addsubmenu/edit/(:any)'] = "addsubmenu/AddSubmenu/edit/$1";
 $route['addsubmenu/update/(:any)']['put'] = "addsubmenu/AddSubmenu/update/$1";
 $route['addsubmenu/delete/(:any)'] = "addsubmenu/AddSubmenu/delete/$1";
+// Add Sub Sub Menu
+$route['addsubsubmenu'] = "addsubsubmenu/AddSubSubmenu";
+$route['addsubsubmenu/create'] = "addsubsubmenu/AddSubSubmenu/create";
 //module
 $route['module'] = "addon/module/index";
 // Menu add
