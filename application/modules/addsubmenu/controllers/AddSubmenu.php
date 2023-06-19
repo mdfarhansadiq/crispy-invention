@@ -42,45 +42,46 @@ class AddSubmenu extends CI_Controller
         $this->load->view('addsubmenu');
     }
 
-    // public function edit($id)
-    // {
-    //     // Handle form submission
-    //     $this->load->model('Add_menu_model');
+    public function edit($id)
+    {
+        // Handle form submission
+        //$this->load->model('Add_menu_model');
+        $data['menus'] = $this->Add_menu_model->get_menus();
+        $data['submenu'] = $this->Add_sub_menu_model->edit_sub_menu($id);
+        // Fetch the user
+        // Show edit user form
+        $this->load->view('addsubmenuedit', $data);
+    }
 
-    //     $data['menu'] = $this->Add_menu_model->edit_menu($id);
-    //     // Fetch the user
-    //     // Show edit user form
-    //     $this->load->view('addmenuedit', $data);
-    // }
+    public function update($id)
+    {
+        if ($_POST) {
+            $data = array(
+                'menuselect' => $this->input->post('menuselect'),
+                'submenuname' => $this->input->post('submenuname'),
+                'checksubsubmenu' => $this->input->post('checksubsubmenu'),
+                'submenuslug' => $this->input->post('submenuslug')
+            );
 
-    // public function update($id)
-    // {
-    //     if ($_POST) {
-    //         $data = array(
-    //             'menuname' => $this->input->post('menuname'),
-    //             'checksubmenu' => $this->input->post('checksubmenu'),
-    //             'menuslug' => $this->input->post('menuslug')
-    //         );
+            $this->db->where('id', $id);
+            $this->db->update('add_sub_menu', $data);
 
-    //         $this->db->where('id', $id);
-    //         $this->db->update('add_menu', $data);
+            // $this->load->model('Add_menu_model');
+            // Insert user
 
-    //         // $this->load->model('Add_menu_model');
-    //         // Insert user
+            // Redirect to user list
+            redirect('addsubmenu');
+        }
 
-    //         // Redirect to user list
-    //         redirect('addmenu');
-    //     }
+        //redirect(base_url('addmenu'));
+    }
 
-    //     //redirect(base_url('addmenu'));
-    // }
+    public function delete($id)
+    {
+        // Delete user
+        $this->Add_sub_menu_model->delete_submenu($id);
 
-    // public function delete($id)
-    // {
-    //     // Delete user
-    //     $this->Add_menu_model->delete_menu($id);
-
-    //     // Redirect to user list
-    //     redirect('addmenu');
-    // }
+        // Redirect to user list
+        redirect('addsubmenu');
+    }
 }

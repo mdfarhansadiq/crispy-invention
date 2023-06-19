@@ -20,11 +20,11 @@ class Add_sub_menu_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    // public function edit_menu($id)
-    // {
-    //     $query = $this->db->get_where('add_menu', ['id' => $id]);
-    //     return $query->row();
-    // }
+    public function edit_sub_menu($id)
+    {
+        $query = $this->db->get_where('add_sub_menu', ['id' => $id]);
+        return $query->row();
+    }
 
     // public function update_menu($data, $id)
     // {
@@ -33,8 +33,8 @@ class Add_sub_menu_model extends CI_Model
     //     //$this->db->where('id',$id)->update('add_menu',$data);
     // }
 
-    // public function delete_menu($id) {
-    //     $this->db->where('id', $id);
-    //     $this->db->delete('add_menu');
-    // }
+    public function delete_submenu($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('add_sub_menu');
+    }
 }
