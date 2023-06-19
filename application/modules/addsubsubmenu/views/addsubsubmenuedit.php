@@ -46,20 +46,6 @@
             margin: 4px 2px;
             cursor: pointer;
         }
-
-        .deleteBtn {
-            background-color: #f44337;
-            ;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
     </style>
 
     <style>
@@ -106,79 +92,58 @@
     <!-- (c) w3schools.com -->
     <div>
         <div>
-            <h3 style="text-align: center;">Add SubSubMenu - form</h3>
+            <h3 style="text-align: center;">Edit Sub-Sub Menu - form</h3>
         </div>
-        <form action="<?php echo site_url('addsubsubmenu/AddSubSubmenu/create'); ?>" method="post">
+        <form action="<?php echo site_url('addsubsubmenu/AddSubSubmenu/update/'.$subsubmenu->id); ?>" method="post">
             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
             <lable>Select Sub Menu Name</lable>
             <select name="submenuselect">
-                <option value="" selected>Select Sub Menu</option>
+                <!-- <option value="" selected>Select Menu</option> -->
                 <?php
                 foreach ($submenus as $submenu) {
-                    if ($submenu->checksubsubmenu == 2) {
+                    if ($submenu->id == $subsubmenu->submenuselect) {
+                        echo "<option value='{$submenu->id}' selected>{$submenu->submenuname}</option>";
+                    }
+                    if($submenu->checksubsubmenu == 2 && ($submenu->id != $subsubmenu->submenuselect))
+                    {
                         echo "<option value='{$submenu->id}'>{$submenu->submenuname}</option>";
                     }
                 }
                 ?>
             </select>
             <br>
+
             <label for="menuname">Sub Sub Menu Name</label>
-            <input type="text" id="menuname" name="subsubmenuname" placeholder="Sub Sub Menu Name">
+            <input type="text" id="menuname" name="subsubmenuname" placeholder="Sub Sub Menu Name" value="<?= $subsubmenu->subsubmenuname ?>">
 
 
             <div style="display: block;" id="menuSlugDiv">
                 <label for="menuslug">Sub Sub Menu Slug</label>
-                <input type="text" id="menuslug" name="subsubmenuslug" placeholder="Sub Sub Menu Slug" value="">
+                <input type="text" id="menuslug" name="subsubmenuslug" placeholder="Sub Sub Menu Slug" value="<?= $subsubmenu->subsubmenuslug ?>">
             </div>
 
+            
 
             <input type="submit" value="Submit">
         </form>
     </div>
 
-    <div class="box-wrap">
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Serial No.</th>
-                        <th>Sub Sub Menu Name</th>
-                        <th>Sub Sub Menu Slug</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $sl = 1; ?>
-                    <?php foreach ($subsubmenus as $subsubmenu) : ?>
-                        <tr>
-                            <td><?php echo $sl++; ?></td>
-                            <td><?php echo $subsubmenu->subsubmenuname; ?></td>
-                            <td><?php echo $subsubmenu->subsubmenuslug; ?></td>
-                            <td>
-                                <button class="editBtn">
-                                    <a href="<?php echo site_url('addsubsubmenu/edit/' . $subsubmenu->id); ?>" style="color: #f2f2f2">Edit</a></button> |
-                                <button class="deleteBtn"> <a href="<?php echo site_url('addsubsubmenu/delete/' . $subsubmenu->id); ?>" style="color: #f2f2f2;" onclick="return confirm('Are you sure you want to delete this sub-sub-menu?');">Delete</a></button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <!-- <script>
+        var MenuSlugVal = document.getElementById("menuslug").value;
+
         function radioBtnY() {
             var radioBtnValYes = document.getElementById("radioBtnYes").value;
             document.getElementById("menuSlugDiv").style.display = 'none';
-            document.getElementById("radioBtnYes").value = '2';
-            console.log(radioBtnValYes);
+            MenuSlugVal = document.getElementById("menuslug").value;
+            document.getElementById("menuslug").value = '';
+            console.log(document.getElementById("menuslug").value);
         }
 
         function radioBtnN() {
             var radioBtnValNo = document.getElementById("radioBtnNo").value;
             document.getElementById("menuSlugDiv").style.display = 'block';
-            console.log(radioBtnValNo);
+            document.getElementById("menuslug").value = MenuSlugVal;
+            console.log(document.getElementById("menuslug").value);
         }
     </script> -->
 </body>

@@ -154,9 +154,9 @@
                 <thead>
                     <tr>
                         <th>Serial No.</th>
-                        <th>Menu Name</th>
+                        <th>Sub Menu Name</th>
                         <th>Sub Sub Menu status</th>
-                        <th>Menu Slug</th>
+                        <th>Sub Menu Slug</th>
                         <th>Action</th>
                     </tr>
                 </thead>

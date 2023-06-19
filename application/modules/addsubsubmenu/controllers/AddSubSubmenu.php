@@ -15,6 +15,7 @@ class AddSubSubmenu extends CI_Controller
         // Fetch all users
         // $data['menus'] = $this->Add_menu_model->get_menus();
         $data['submenus'] = $this->Add_sub_menu_model->get_sub_menus();
+        $data['subsubmenus'] = $this->Add_sub_sub_menu_model->get_sub_sub_menus();
         // Pass the data to the view
         $this->load->view('addsubsubmenu', $data);
     }
@@ -23,7 +24,7 @@ class AddSubSubmenu extends CI_Controller
     public function create()
     {
         // Handle form submission
-        echo "Hiiiiiiiiiii";
+        
         if ($_POST) {
             $data = array(
                 'submenuselect' => $this->input->post('submenuselect'),
@@ -42,46 +43,45 @@ class AddSubSubmenu extends CI_Controller
         $this->load->view('addsubsubmenu');
     }
 
-    // public function edit($id)
-    // {
-    //     // Handle form submission
-    //     //$this->load->model('Add_menu_model');
-    //     $data['menus'] = $this->Add_menu_model->get_menus();
-    //     $data['submenu'] = $this->Add_sub_menu_model->edit_sub_menu($id);
-    //     // Fetch the user
-    //     // Show edit user form
-    //     $this->load->view('addsubmenuedit', $data);
-    // }
+    public function edit($id)
+    {
+        // Handle form submission
+        //$this->load->model('Add_menu_model');
+        $data['submenus'] = $this->Add_sub_menu_model->get_sub_menus();
+        $data['subsubmenu'] = $this->Add_sub_sub_menu_model->edit_sub_sub_menu($id);
+        // Fetch the user
+        // Show edit user form
+        $this->load->view('addsubsubmenuedit', $data);
+    }
 
-    // public function update($id)
-    // {
-    //     if ($_POST) {
-    //         $data = array(
-    //             'menuselect' => $this->input->post('menuselect'),
-    //             'submenuname' => $this->input->post('submenuname'),
-    //             'checksubsubmenu' => $this->input->post('checksubsubmenu'),
-    //             'submenuslug' => $this->input->post('submenuslug')
-    //         );
+    public function update($id)
+    {
+        if ($_POST) {
+            $data = array(
+                'submenuselect' => $this->input->post('submenuselect'),
+                'subsubmenuname' => $this->input->post('subsubmenuname'),
+                'subsubmenuslug' => $this->input->post('subsubmenuslug')
+            );
 
-    //         $this->db->where('id', $id);
-    //         $this->db->update('add_sub_menu', $data);
+            $this->db->where('id', $id);
+            $this->db->update('add_sub_sub_menu', $data);
 
-    //         // $this->load->model('Add_menu_model');
-    //         // Insert user
+            // $this->load->model('Add_menu_model');
+            // Insert user
 
-    //         // Redirect to user list
-    //         redirect('addsubmenu');
-    //     }
+            // Redirect to user list
+            redirect('addsubsubmenu');
+        }
 
-    //     //redirect(base_url('addmenu'));
-    // }
+        //redirect(base_url('addmenu'));
+    }
 
-    // public function delete($id)
-    // {
-    //     // Delete user
-    //     $this->Add_sub_menu_model->delete_submenu($id);
+    public function delete($id)
+    {
+        // Delete user
+        $this->Add_sub_sub_menu_model->delete_subsubmenu($id);
 
-    //     // Redirect to user list
-    //     redirect('addsubmenu');
-    // }
+        // Redirect to user list
+        redirect('addsubsubmenu');
+    }
 }
