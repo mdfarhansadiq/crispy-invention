@@ -26,8 +26,58 @@
                 <a href="<?php echo base_url('dashboard/home') ?>"><i class="ti-home"></i>
                     <?php echo display('dashboard')?></a>
             </li>
+            <li class="<?php echo (($this->uri->segment(1)=="dynamic")?"mm-active":null) ?>">
+            <a class="has-arrow material-ripple"
+                    href="#"><i class="ti-home"></i>Dynamic Menu</a>
+                    <ul class="nav-second-level">  
 
-            <?php  
+
+                <li class="<?php echo (($this->uri->segment(1)=="dashboard")?"mm-active":null) ?>">
+                    <a href="<?php echo base_url('dynamic_menu/add') ?>">
+                        Add Main Menu
+                    </a>
+                </li>
+                <li class="<?php echo (($this->uri->segment(1)=="dashboard")?"mm-active":null) ?>">
+                    <a href="<?php echo base_url('dashboard/home') ?>">
+                        Add Sub Menu
+                    </a>
+                </li>
+                <li class="<?php echo (($this->uri->segment(1)=="dashboard")?"mm-active":null) ?>">
+                    <a href="<?php echo base_url('dashboard/home') ?>">
+                        Add Sub Sub Menu
+                    </a>
+                </li>
+                    </ul>
+
+                
+            </li>
+
+            <?php
+                            $HmvcMenu2["menu"] = array(
+                                //set icon
+                                "icon"           => "<i class='ti-bar-chart' aria-hidden='true'></i>
+                            ", 
+            
+                            "booking_report" => array( 
+                                    "controller" => "report",
+                                    "method"     => "index",
+                                    "url"        => "reports/booking-report",
+                                    "permission" => "read"
+                                ),
+                            "purchase_report" => array( 
+                                    "controller" => "report",
+                                    "method"     => "productreport",
+                                    "url"        => "reports/purchase-report",
+                                    "permission" => "read"
+                                ),
+                                "stock_report" => array( 
+                                    "controller" => "report",
+                                    "method"     => "stockreport",
+                                    "url"        => "reports/stock-report",
+                                    "permission" => "read"
+                                ),
+                                
+                            );  
                                 
                 // module name
                 $HmvcMenu2["accounts"] = array(
@@ -451,6 +501,8 @@
                     ),
                     
                 );
+                //module
+
                 // module name
                 $HmvcMenu2["room_facilities"] = array(
                     //set icon
@@ -1055,7 +1107,7 @@
                                 if ($this->permission->module($moduleName)->access()) {
                         
                                 $this->permission->module($moduleName)->access();
-                                $allmenu = ['dashboard','accounts','customer','hrm','payment_setting','purchase','reports','room_facilities','room_reservation','room_setting','tax_management','units','addon','template'];
+                                $allmenu = ['dashboard','menu','accounts','customer','hrm','payment_setting','purchase','reports','room_facilities','room_reservation','room_setting','tax_management','units','addon','template'];
                             ?>
             <li class="<?php echo (($this->uri->segment(1)==$moduleName)?"mm-active":null) ?>">
                 <a class="has-arrow material-ripple"

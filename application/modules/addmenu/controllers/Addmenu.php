@@ -10,7 +10,7 @@ class Addmenu extends CI_Controller
 
     public function index()
     {
-        //$this->load->view('template/includes/header');
+        
         // Fetch all users
         //$this->load->view('template/includes/sidebar');
         $data['menus'] = $this->Add_menu_model->get_menus();

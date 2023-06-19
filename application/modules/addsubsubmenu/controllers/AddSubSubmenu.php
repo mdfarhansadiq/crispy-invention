@@ -13,6 +13,7 @@ class AddSubSubmenu extends CI_Controller
     public function index()
     {
         // Fetch all users
+        
         // $data['menus'] = $this->Add_menu_model->get_menus();
         $data['submenus'] = $this->Add_sub_menu_model->get_sub_menus();
         $data['subsubmenus'] = $this->Add_sub_sub_menu_model->get_sub_sub_menus();

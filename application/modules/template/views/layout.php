@@ -77,6 +77,7 @@
                     <!-- load messages -->
                     <?php $this->load->view('includes/messages') ?>
                     <!-- load custom page -->
+                    
                     <?php echo $this->load->view($module.'/'.$page) ?>
                 </div>
                 <!--/.body content-->

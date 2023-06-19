@@ -111,6 +111,11 @@ $route['module'] = "addon/module/index";
 $route['menu-add'] = "menu/Menumethod/create";
 
 //C_O_A
+$route['dynamic_menu'] = "dynamic/dynamic/fin_yearlist";
+$route['dynamic_menu/create'] = "dynamic/Dynamic/create";
+$route['dynamic_menu/edit/(:any)'] = "dynamic/Dynamic/edit/$1";
+$route['dynamic_menu/update/(:any)']['put'] = "dynamic/Dynamic/update/$1";
+$route['dynamic_menu/delete/(:any)'] = "dynamic/Dynamic/delete/$1";
 $route['accounts/financial-year'] = "accounts/accounts/fin_yearlist";
 $route['accounts/financial-year-end'] = "accounts/accounts/fin_yearend";
 $route['accounts/opening-balance'] = "accounts/accounts/opening_balanceform";
