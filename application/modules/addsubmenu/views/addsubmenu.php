@@ -113,9 +113,13 @@
             <lable>Select Menu Name</lable>
             <select name="menuselect">
                 <option value="" selected>Select Menu</option>
-                <?php foreach ($menus as $menu) : ?>
-                    <option value="<?= $menu->id ?>"><?= $menu->menuname ?></option>
-                <?php endforeach; ?>
+                <?php
+                foreach ($menus as $menu) {
+                    if ($menu->checksubmenu == 2) {
+                        echo "<option value='{$menu->id}'>{$menu->menuname}</option>";
+                    }
+                }
+                ?>
             </select>
             <br>
             <label for="menuname">Sub Menu Name</label>
@@ -129,7 +133,7 @@
                 <input type="radio" value="1" name="checksubsubmenu" id="radioBtnNo" onchange="radioBtnN()">
             </div>
             <div style="display: none;" id="menuSlugDiv">
-                <label for="menuslug">Menu Slug</label>
+                <label for="menuslug">Sub Menu Slug</label>
                 <input type="text" id="menuslug" name="submenuslug" placeholder="Sub Menu Slug" value="">
             </div>
 
