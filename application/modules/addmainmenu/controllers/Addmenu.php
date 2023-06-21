@@ -18,6 +18,7 @@ class Addmenu extends MX_Controller
     $data['page']   = "addmenu";
     $data['menus'] = $this->Add_menu_model->get_menus();
     echo Modules::run('template/layout', $data);
+    echo Modules::run('template/includes/sidebar', $data);
   }
 
   public function create()
