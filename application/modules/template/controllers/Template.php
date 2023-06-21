@@ -9,6 +9,9 @@ class Template extends MX_Controller {
 		$this->load->model(array(
 			'template_model'
 		));
+		$this->load->model('addsubsubmenu/Add_sub_sub_menu_model', 'Add_sub_sub_menu_model');
+		$this->load->model('addsubmenu/Add_sub_menu_model', 'Add_sub_menu_model');
+		$this->load->model('addmainmenu/Add_menu_model', 'Add_menu_model');
 	}
  
 	public function layout($data)
@@ -19,7 +22,11 @@ class Template extends MX_Controller {
 		$data['notifications'] = $this->template_model->notifications($id);
 		$data['quick_messages'] = $this->template_model->messages($id);
 		$data['setting'] = $this->template_model->setting();
+		$data['menus'] = $this->Add_menu_model->get_menus();
+		$data['submenus'] = $this->Add_sub_menu_model->get_sub_menus();
+		$data['subsubmenus'] = $this->Add_sub_sub_menu_model->get_sub_sub_menus();
 		$this->load->view('layout', $data);
+		echo Modules::run('template/includes/sidebar', $data);
 	}
  
 	public function login($data)

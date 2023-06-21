@@ -10,7 +10,6 @@ class Accounts extends MX_Controller {
 		$this->load->model(array(
 			'accounts_model'
 		));	
-		
 	}
 
 	public function C_O_A() 
@@ -1107,6 +1106,7 @@ public function update_debit_voucher(){
       $data['module'] = "accounts";
       $data['yearlist']   = $this->accounts_model->get_yearlist();   
       $data['page']   = "financial_year";   
+
       echo Modules::run('template/layout', $data);
     }
     public function financial_year(){
