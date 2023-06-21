@@ -32,17 +32,17 @@
                     <ul class="nav-second-level">  
 
 
-                <li class="<?php echo (($this->uri->segment(1)=="dashboard")?"mm-active":null) ?>">
-                    <a href="<?php echo base_url('dynamic_menu/add') ?>">
+                <li class="<?php echo (($this->uri->segment(1)=="dynamic")?"mm-active":null) ?>">
+                    <a href="<?php echo base_url('dynamic_menu') ?>">
                         Add Main Menu
                     </a>
                 </li>
-                <li class="<?php echo (($this->uri->segment(1)=="dashboard")?"mm-active":null) ?>">
+                <li class="<?php echo (($this->uri->segment(1)=="dynamic")?"mm-active":null) ?>">
                     <a href="<?php echo base_url('dashboard/home') ?>">
                         Add Sub Menu
                     </a>
                 </li>
-                <li class="<?php echo (($this->uri->segment(1)=="dashboard")?"mm-active":null) ?>">
+                <li class="<?php echo (($this->uri->segment(1)=="dynamic")?"mm-active":null) ?>">
                     <a href="<?php echo base_url('dashboard/home') ?>">
                         Add Sub Sub Menu
                     </a>

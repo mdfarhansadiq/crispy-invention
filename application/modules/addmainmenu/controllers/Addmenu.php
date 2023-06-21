@@ -1,21 +1,21 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dynamic extends MX_Controller
+class Addmenu extends MX_Controller
 {
 
   public function __construct()
   {
     parent::__construct();
 
-    $this->load->model('addmenu/Add_menu_model');
+    $this->load->model('Add_menu_model');
   }
 
-  public function fin_yearlist()
+  public function index()
   {
     $data['title'] = display('Add Menu');
-    $data['module'] = "dynamic";
-    $data['page']   = "financial_year";
+    $data['module'] = "addmainmenu";
+    $data['page']   = "addmenu";
     $data['menus'] = $this->Add_menu_model->get_menus();
     echo Modules::run('template/layout', $data);
   }
@@ -34,25 +34,25 @@ class Dynamic extends MX_Controller
       $this->Add_menu_model->insert_menu($data);
 
       // Redirect to user list
-      redirect('dynamic_menu');
+      redirect('addmenu');
     }
 
     // Show create user form
-    $this->load->view('financial_year');
+    $this->load->view('addmenu');
   }
 
 
   public function edit($id)
   {
     // Handle form submission
-    $data['module'] = "dynamic";
-    $data['page']   = "financial_year_edit";
+    $data['module'] = "addmainmenu";
+    $data['page']   = "addmenuedit";
     $this->load->model('Add_menu_model');
 
     $data['menu'] = $this->Add_menu_model->edit_menu($id);
     // Fetch the user
     // Show edit user form
-    $this->load->view('financial_year_edit', $data);
+    $this->load->view('addmenuedit', $data);
     echo Modules::run('template/layout', $data);
   }
 
@@ -72,7 +72,7 @@ class Dynamic extends MX_Controller
       // Insert user
 
       // Redirect to user list
-      redirect('dynamic_menu');
+      redirect('addmenu');
     }
 
     //redirect(base_url('addmenu'));
@@ -84,6 +84,6 @@ class Dynamic extends MX_Controller
         $this->Add_menu_model->delete_menu($id);
 
         // Redirect to user list
-        redirect('dynamic_menu');
+        redirect('addmenu');
     }
 }
