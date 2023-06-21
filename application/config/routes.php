@@ -88,11 +88,11 @@ $route['profile-setting'] = "dashboard/home/setting";
 $route['profile'] = "dashboard/home/profile";
 $route['autoupdate'] = "dashboard/autoupdate";
 // Add Menu
-// $route['addmenu'] = "addmenu/Addmenu";
-// $route['addmenu/create'] = "addmenu/Addmenu/create";
-// $route['addmenu/edit/(:any)'] = "addmenu/Addmenu/edit/$1";
-// $route['addmenu/update/(:any)']['put'] = "addmenu/Addmenu/update/$1";
-// $route['addmenu/delete/(:any)'] = "addmenu/Addmenu/delete/$1";
+$route['addmenu'] = "addmainmenu/Addmenu";
+$route['addmenu/create'] = "addmainmenu/Addmenu/create";
+$route['addmenu/edit/(:any)'] = "addmainmenu/Addmenu/edit/$1";
+$route['addmenu/update/(:any)']['put'] = "addmainmenu/Addmenu/update/$1";
+$route['addmenu/delete/(:any)'] = "addmainmenu/Addmenu/delete/$1";
 // Add Sub Menu
 $route['addsubmenu'] = "addsubmenu/AddSubmenu";
 $route['addsubmenu/create'] = "addsubmenu/AddSubmenu/create";
@@ -111,11 +111,6 @@ $route['module'] = "addon/module/index";
 $route['menu-add'] = "menu/Menumethod/create";
 
 //C_O_A
-$route['addmenu'] = "addmainmenu/Addmenu";
-$route['addmenu/create'] = "addmainmenu/Addmenu/create";
-$route['addmenu/edit/(:any)'] = "addmainmenu/Addmenu/edit/$1";
-$route['addmenu/update/(:any)']['put'] = "addmainmenu/Addmenu/update/$1";
-$route['addmenu/delete/(:any)'] = "addmainmenu/Addmenu/delete/$1";
 $route['accounts/financial-year'] = "accounts/accounts/fin_yearlist";
 $route['accounts/financial-year-end'] = "accounts/accounts/fin_yearend";
 $route['accounts/opening-balance'] = "accounts/accounts/opening_balanceform";
