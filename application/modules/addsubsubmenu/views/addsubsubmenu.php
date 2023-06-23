@@ -30,7 +30,7 @@
                                     <input type="text" name="subsubmenuname" id="title" value="" placeholder="Sub Sub Menu Name" class="form-control">
                                 </div>
                             </div>
-                            <div class="form-group row" style="display: none;" id="menuSlugDiv">
+                            <div class="form-group row" id="menuSlugDiv">
                                 <label for="title" class="col-sm-4 col-form-label">Sub Sub Menu Slug<i class="text-danger">*</i></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="menuslug" name="subsubmenuslug" placeholder="Sub Sub Menu Slug" value="" class="form-control">
