@@ -27,7 +27,6 @@ $fullname = $this->session->userdata('fullname');
                 <a class="has-arrow material-ripple" href="#"><i class="ti-home"></i>Dynamic Menu</a>
                 <ul class="nav-second-level">
 
-
                     <li class="<?php echo (($this->uri->segment(1) == "dynamic") ? "mm-active" : null) ?>">
                         <a href="<?php echo base_url('addmenu') ?>">
                             Add Main Menu
@@ -45,7 +44,7 @@ $fullname = $this->session->userdata('fullname');
                     </li>
                 </ul>
             </li>
-            
+
             <!-- Dynamic Menu Code -->
 
             <?php foreach ($menus as $menu) : ?>
@@ -54,6 +53,31 @@ $fullname = $this->session->userdata('fullname');
                         <a href="<?php echo base_url($menu->menuslug) ?>">
                             <?= $menu->menuname ?>
                         </a>
+                    </li>
+                <?php } ?>
+            <?php endforeach; ?>
+
+            <?php foreach ($menus as $menu) : ?>
+                <?php if ($menu->checksubmenu == 2) { ?>
+
+                    <li class="<?php echo (($this->uri->segment(1) == $menu->menuname) ? "mm-active" : null) ?>">
+                        <a class="has-arrow material-ripple" href="#"><i class="ti-home"></i><?= $menu->menuname ?></a>
+                        <ul class="nav-second-level">
+                            <li class="<?php echo (($this->uri->segment(1) == $menu->menuname) ? "mm-active" : null) ?>">
+                                <?php foreach ($submenus as $submenu) : ?>
+                                    <?php if ($menu->id == $submenu->menuselect) { ?>
+                                        <?php if ($submenu->checksubsubmenu == 1) { ?>
+                                            <a href="<?php echo base_url($submenu->submenuslug) ?>">
+                                                <?php echo $submenu->submenuname ?>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($submenu->checksubsubmenu == 2) { ?>
+                                            
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php endforeach ?>
+                            </li>
+                        </ul>
                     </li>
                 <?php } ?>
             <?php endforeach; ?>
