@@ -51,7 +51,7 @@ $fullname = $this->session->userdata('fullname');
                 <?php if ($menu->checksubmenu == 1) { ?>
                     <li>
                         <a href="<?php echo base_url($menu->menuslug) ?>">
-                            <?= $menu->menuname ?>
+                        <i class="ti-home"></i><?= $menu->menuname ?>
                         </a>
                     </li>
                 <?php } ?>
@@ -74,18 +74,17 @@ $fullname = $this->session->userdata('fullname');
                                         <?php if ($submenu->checksubsubmenu == 2) { ?>
                                             <li class="<?php echo (($this->uri->segment(1) == $submenu->submenuname) ? "mm-active" : null) ?>">
                                                 <a class="has-arrow material-ripple" href="#"><i class="ti-home"></i><?= $submenu->submenuname ?></a>
-                                                <ul class="nav-second-level">
+                                                <ul class="nav-third-level">
                                                     <li class="<?php echo (($this->uri->segment(1) == $submenu->submenuname) ? "mm-active" : null) ?>">
                                                         <?php foreach ($subsubmenus as $subsubmenu) : ?>
                                                             <?php if ($submenu->id == $subsubmenu->submenuselect) { ?>
                                                                 <a href="<?php echo base_url($subsubmenu->subsubmenuslug) ?>">
-                                                                    <?php echo $subsubmenu->subsubmenuname ?>
+                                                                <i class="ti-home"></i><?php echo $subsubmenu->subsubmenuname ?>
                                                                 </a>
                                                             <?php } ?>
                                                         <?php endforeach ?>
                                                     </li>
                                                 
-                                                    
                                                 </ul>
                             </li>
                                     <?php } ?>
