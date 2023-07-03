@@ -1107,17 +1107,6 @@ $HmvcMenu2["tax_management"] = array(
     ),
 );
 
-$HmvcMenu2["addmainmenu"] = array(
-    //set icon
-    "icon"           => "<i style='' class='fa'>&#xf0c9;</i>",
-
-    "add_menu" => array(
-        "controller" => "Addmenu",
-        "method"     => "index",
-        "url"        => "addmenu",
-        "permission" => "read"
-    ),
-);
 
 $path = 'application/modules/';
 $map  = directory_map($path);
@@ -1138,7 +1127,7 @@ if (isset($HmvcMenu2) && $HmvcMenu2 != null && sizeof($HmvcMenu2) > 0)
             if ($this->permission->module($moduleName)->access()) {
 
                 $this->permission->module($moduleName)->access();
-                $allmenu = ['dashboard', 'addmainmenu', 'accounts', 'customer', 'hrm', 'payment_setting', 'purchase', 'reports', 'room_facilities', 'room_reservation', 'room_setting', 'tax_management', 'units', 'addon', 'template'];
+                $allmenu = ['dashboard', 'accounts', 'customer', 'hrm', 'payment_setting', 'purchase', 'reports', 'room_facilities', 'room_reservation', 'room_setting', 'tax_management', 'units', 'addon', 'template'];
 ?>
         <li class="<?php echo (($this->uri->segment(1) == $moduleName) ? "mm-active" : null) ?>">
             <a class="has-arrow material-ripple" href="#"><?php echo (($moduleData['icon'] != null) ? $moduleData['icon'] : null) ?><?php echo display($moduleName); ?><span class="<?php echo (!in_array($moduleName, $allmenu) ? "badges badges-inline badges-danger text-white mt-1 mr-4" : "") ?>"><?php echo (!in_array($moduleName, $allmenu) ? " Addon" : ""); ?></span></a>
