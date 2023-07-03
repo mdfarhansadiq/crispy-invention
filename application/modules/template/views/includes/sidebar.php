@@ -68,7 +68,7 @@ $fullname = $this->session->userdata('fullname');
                                     <?php if ($menu->id == $submenu->menuselect) { ?>
                                         <?php if ($submenu->checksubsubmenu == 1) { ?>
                                             <a href="<?php echo base_url($submenu->submenuslug) ?>">
-                                                <?php echo $submenu->submenuname ?>
+                                            <i class="ti-home"></i><?php echo $submenu->submenuname ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($submenu->checksubsubmenu == 2) { ?>
