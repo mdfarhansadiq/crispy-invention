@@ -35,16 +35,6 @@
                     <?php echo form_open('paymentconfirm');?>
                     <div class="row mb-5">
                         <div class="col-md-6">
-                            <label class="text-dark font-weight-600"><?php echo display('payment_method') ?></label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="pmethod">
-                                <?php foreach($paymentmethod as $pmethod){?>
-                                <option <?php if($pmethod->payment_method_id==4){ echo "selected";}?>
-                                    value="<?php echo html_escape($pmethod->payment_method_id);?>">
-                                    <?php echo html_escape($pmethod->payment_method);?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
                             <h6 class="font-weight-bold"><?php echo display('amount') ?></h6>
                             <?php $cart = $this->cart->contents();
 									foreach($cart as $item){
@@ -57,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="submit" id="disablemode" onclick="checkyear()" class="btn btn-primary"><?php echo display('submit') ?></button>
+                            <button type="submit" class="btn btn-primary"><?php echo display('submit') ?></button>
                         </div>
                     </div>
                     <input type="hidden" name="finyear" id="finyear" value="<?php echo financial_year(); ?>">
