@@ -275,6 +275,24 @@ function _alpha_dash_space($str_in = '',$fields=''){
 		$discount=$this->input->post('discount',true);
 		$amount=$this->input->post('amount',true)-$discount;
 		$isaccount=$this->input->post('isaccount',true);
+		$data['f_name'] = $f_name;
+		$data['l_name'] = $l_name;
+		$data['email'] = $email;
+		$data['phone'] = $phone;
+		$data['address'] = $address;
+		$data['checkindate'] = $checkindate;
+		$data['checkoutdate'] = $checkoutdate;
+		$data['adult'] = $adult;
+		$data['children'] = $children;
+		$data['guestfullname'] = $phone;
+		$data['specialinstruction'] = $specialinstruction;
+		$data['roomid'] = $roomid;
+		$data['roomtype'] = $roomtype;
+		$data['roomrate'] = $roomrate;
+		$data['discount'] = $discount;
+		$data['amount'] = $amount;
+		$this->db->insert('customer_booking_info', $data);
+		// $this->Hotel_model->insert_customer_booking($data);
 		$password='';
 		if(!empty($isaccount)){
 			$password=$this->input->post('password',true);
@@ -390,7 +408,7 @@ function _alpha_dash_space($str_in = '',$fields=''){
 	 	$cart = $this->cart->contents();
 		$userinfo=$this->db->select("*")->from('customerinfo')->where('customerid',$this->session->userdata('UserID'))->get()->row();
 		$data['userinfo']=$userinfo;
-		$data['paymentmethod']=$this->db->select("*")->from('payment_method')->where('is_active',1)->get()->result();
+		//$data['paymentmethod']=$this->db->select("*")->from('payment_method')->where('is_active',1)->get()->result();
 	    $data['title']="Confirm your Booking";
 		$data['content']=$this->load->view('checkout',$data,TRUE);
 		$this->load->view('index',$data);
