@@ -16,14 +16,13 @@ class Room_reservation_request_model extends CI_Model
 
     public function insert_menu($data)
     {
-        $this->db->insert('add_sub_menu', $data);
+        $this->db->insert('accepted_customer_booking_infos', $data);
         return $this->db->insert_id();
     }
 
     public function specific_customer_booking_info_accept($id)
     {
         $data = $this->db->get_where('customer_booking_info', ['id' => $id]);
-        insert_menu($data);
         // $this->db->insert('accepted_customer_booking_infos', $data);
         // return $this->db->insert_id();
         return $data->row();

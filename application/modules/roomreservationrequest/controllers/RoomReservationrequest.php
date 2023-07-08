@@ -52,9 +52,9 @@ class RoomReservationrequest extends MX_Controller
     $data['page']   = "roomreservationrequest";
     $this->load->model('roomreservationrequest/Room_reservation_request_model', 'Room_reservation_request_model');
 
-    $data['accept'] = $this->Room_reservation_request_model->specific_customer_booking_info_accept($id);
-    // Fetch the user
-    // Show edit user form
+    $query = $this->Room_reservation_request_model->specific_customer_booking_info_accept($id);
+    $this->Room_reservation_request_model->insert_menu($query);
+    
     redirect('roomreservationrequest');
     $this->load->view('roomreservationrequest', $data);
     echo Modules::run('template/layout', $data);

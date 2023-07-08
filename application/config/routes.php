@@ -112,7 +112,7 @@ $route['roomreservationrequest/accept/(:any)'] = "roomreservationrequest/RoomRes
 //module
 $route['module'] = "addon/module/index";
 // Menu add
-$route['menu-add'] = "menu/Menumethod/create";
+// $route['menu-add'] = "menu/Menumethod/create";
 
 //C_O_A
 $route['accounts/financial-year'] = "accounts/accounts/fin_yearlist";
