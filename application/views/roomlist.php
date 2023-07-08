@@ -19,7 +19,7 @@
                                             <div class="search-title fs-13 text-uppercase"><?php echo display('adults')?></div>
                                             <div class="d-flex justify-content-center align-items-center number-spinner">
                                                 <a class=" btn-pm" data-dir="dwn"><span class="ti-minus"></span></a>
-                                                <input type="text" class="spinner" name="adults" value="<?php echo $this->session->userdata('adults');?>">
+                                                <input type="number" class="spinner" name="adults" value="<?php echo $this->session->userdata('adults');?>">
                                                 <a class=" btn-pm" data-dir="up"><span class="ti-plus"></span></a>
                                             </div>
                                         </div>

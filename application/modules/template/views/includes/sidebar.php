@@ -45,6 +45,10 @@ $fullname = $this->session->userdata('fullname');
                 </ul>
             </li>
 
+            <li class="<?php echo (($this->uri->segment(1) == "roomreservationrequest") ? "mm-active" : null) ?>">
+                <a class="" href="<?php echo base_url('roomreservationrequest') ?>"><i class="ti-home"></i>Room Reservation Request</a>
+            </li>
+
             <!-- Dynamic Menu Code -->
 
             <?php foreach ($menus as $menu) : ?>
