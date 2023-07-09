@@ -13,6 +13,7 @@
         </div>
 
         <table class="table">
+            <h5>Customer Booking Info Pending</h5>
             <thead>
                 <tr>
                     <th scope="col">Serial No.</th>
@@ -29,17 +30,19 @@
                         <td><?php echo $sl++; ?></td>
                         <td><?php echo $customerbooking->f_name; ?></td>
                         <td><?php echo $customerbooking->email; ?></td>
-                        
+
                         <td>
                             <button class="btn btn-primary">
                                 <a href="<?php echo site_url('roomreservationrequest/accept/' . $customerbooking->id); ?>" style="color: #ffffff"><i class="fa fa-check" aria-hidden="true"></i></a></button>
+                            <button class="btn btn-danger">
+                                <a href="<?php echo site_url('roomreservationrequest/decline/' . $customerbooking->id); ?>" style="color: #ffffff" onclick="return confirm('Are you sure you want to decline this booking?');"><i class="fa fa-times" aria-hidden="true"></i></a></button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
 
-        
+
 
     </div>
 </div>

@@ -14,7 +14,7 @@ class Room_reservation_request_model extends CI_Model
         return $query->result();
     }
 
-    public function insert_menu($data)
+    public function insert_accepted_customer_booking_info($data)
     {
         $this->db->insert('accepted_customer_booking_infos', $data);
         return $this->db->insert_id();
@@ -35,9 +35,9 @@ class Room_reservation_request_model extends CI_Model
     //     //$this->db->where('id',$id)->update('add_menu',$data);
     // }
 
-    // public function delete_submenu($id) 
-    // {
-    //     $this->db->where('id', $id);
-    //     $this->db->delete('add_sub_menu');
-    // }
+    public function delete_specific_customer_booking_info($id) 
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('customer_booking_info');
+    }
 }

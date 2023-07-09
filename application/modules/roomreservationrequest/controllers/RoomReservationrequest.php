@@ -53,8 +53,11 @@ class RoomReservationrequest extends MX_Controller
     $this->load->model('roomreservationrequest/Room_reservation_request_model', 'Room_reservation_request_model');
 
     $query = $this->Room_reservation_request_model->specific_customer_booking_info_accept($id);
-    $this->Room_reservation_request_model->insert_menu($query);
-    
+    $this->Room_reservation_request_model->insert_accepted_customer_booking_info($query);
+
+    // After accepting customer booking
+    $this->Room_reservation_request_model->delete_specific_customer_booking_info($id);
+
     redirect('roomreservationrequest');
     $this->load->view('roomreservationrequest', $data);
     echo Modules::run('template/layout', $data);
@@ -83,12 +86,12 @@ class RoomReservationrequest extends MX_Controller
   //   //redirect(base_url('addmenu'));
   // }
 
-  // public function delete($id)
-  // {
-  //   // Delete user
-  //   $this->Add_sub_menu_model->delete_submenu($id);
+  public function specificcustomerbookingdecline($id)
+  {
+    // Delete user
+    $this->Room_reservation_request_model->delete_specific_customer_booking_info($id);
 
-  //   // Redirect to user list
-  //   redirect('addsubmenu');
-  // }
+    // Redirect to user list
+    redirect('roomreservationrequest');
+  }
 }
