@@ -109,6 +109,8 @@ $route['addsubsubmenu/delete/(:any)'] = "addsubsubmenu/AddSubSubmenu/delete/$1";
 $route['roomreservationrequest'] = "roomreservationrequest/RoomReservationrequest";
 $route['roomreservationrequest/accept/(:any)'] = "roomreservationrequest/RoomReservationrequest/specificcustomerbookingaccept/$1";
 $route['roomreservationrequest/decline/(:any)'] = "roomreservationrequest/RoomReservationrequest/specificcustomerbookingdecline/$1";
+// Room Reservation List
+$route['roomreservationlist'] = "roomreservationlist/RoomReservationlist";
 
 //module
 $route['module'] = "addon/module/index";
