@@ -17,7 +17,9 @@ class RoomReservationrequest extends MX_Controller
     $data['title'] = display('Room Reservation Request');
     $data['module'] = "roomreservationrequest";
     $data['page']   = "roomreservationrequest";
-    $data['customerbookinginfos'] = $this->Room_reservation_request_model->get_booking_info();
+    if ($this->Room_reservation_request_model->get_booking_info()) {
+      $data['customerbookinginfos'] = $this->Room_reservation_request_model->get_booking_info();
+    }
     // $data['submenus'] = $this->Add_sub_menu_model->get_sub_menus();
     echo Modules::run('template/layout', $data);
   }
@@ -59,7 +61,7 @@ class RoomReservationrequest extends MX_Controller
     $this->Room_reservation_request_model->delete_specific_customer_booking_info($id);
 
     redirect('roomreservationrequest');
-    $this->load->view('roomreservationrequest', $data);
+    $this->load->view('roomreservationrequest', $data, $query);
     echo Modules::run('template/layout', $data);
   }
 

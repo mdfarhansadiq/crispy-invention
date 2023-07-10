@@ -31,7 +31,7 @@
                             <td><?php echo $customerbooking->email; ?></td>
 
                             <td>
-                                <button class="btn btn-primary">
+                                <button class="btn btn-success">
                                     <a href="<?php echo site_url('roomreservationrequest/accept/' . $customerbooking->id); ?>" style="color: #ffffff"><i class="fa fa-check" aria-hidden="true"></i></a></button>
                                 <button class="btn btn-danger">
                                     <a href="<?php echo site_url('roomreservationrequest/decline/' . $customerbooking->id); ?>" style="color: #ffffff" onclick="return confirm('Are you sure you want to decline this booking?');"><i class="fa fa-times" aria-hidden="true"></i></a></button>
@@ -41,10 +41,6 @@
                 </tbody>
             </table>
         </div>
-
-
-
-
 
     </div>
 </div>

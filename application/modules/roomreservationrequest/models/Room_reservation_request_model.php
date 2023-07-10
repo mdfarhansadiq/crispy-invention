@@ -17,7 +17,7 @@ class Room_reservation_request_model extends CI_Model
     public function insert_accepted_customer_booking_info($data)
     {
         $this->db->insert('accepted_customer_booking_infos', $data);
-        return $this->db->insert_id();
+        //return $this->db->insert_id();
     }
 
     public function specific_customer_booking_info_accept($id)
